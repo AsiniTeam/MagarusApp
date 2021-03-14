@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Magarus</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="screen1">One hour of pure enterteinment, you couldn\'t help going out with your friends for a wolk!</string>
+    <string name="screen2">Try to guess the hidden objects and be faster than your friends!</string>
+    <string name="screen3">loose all your money paying a lot of kebab to all your friends!</string>
+</resources>
