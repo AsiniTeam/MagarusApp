@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "321139905244",
+    "firebase_url": "https://magarusapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "magarusapp",
+    "storage_bucket": "magarusapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321139905244:android:faba3228b3ce7cf69cda19",
+        "android_client_info": {
+          "package_name": "com.example.magarusapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321139905244-b3vp6pre982c7iuf73pveatbr38pparc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASQ37C8zRuRu68_W15pq-Cb1PcD2NO0Q4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321139905244-b3vp6pre982c7iuf73pveatbr38pparc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
