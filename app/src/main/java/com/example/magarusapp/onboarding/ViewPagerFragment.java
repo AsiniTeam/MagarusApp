@@ -17,7 +17,9 @@ import com.example.magarusapp.onboarding.screens.Screen3;
 import java.util.ArrayList;
 
 
-public class ViewPagerFragment extends Fragment {
+public class
+
+ViewPagerFragment extends Fragment {
 
     private static final int NumberOfFragments = 3;
 
