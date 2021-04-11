@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_grey">#001</color>
+    <color name="fra_black">#0e151d</color>
+    <color name="fra_red">#a90000</color>
 </resources>

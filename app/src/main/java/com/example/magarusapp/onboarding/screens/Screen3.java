@@ -18,9 +18,6 @@ import com.example.magarusapp.R;
 
 public class Screen3 extends Fragment {
 
-    private static final String ON_BOARDING_STRING = "on_boarding_pref";
-    private static final String BOOLEAN_STRING = "on_boarding_boolean";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,8 +31,8 @@ public class Screen3 extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_viewPagerFragment_to_homeFragment);
-                onBoardingFinished();
+
+                viewPager2.setCurrentItem(3);
             }
         });
 
@@ -44,12 +41,6 @@ public class Screen3 extends Fragment {
         return view;
     }
 
-    private void onBoardingFinished() {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(ON_BOARDING_STRING, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(BOOLEAN_STRING, true);
-        editor.apply();
-    }
 
 
 }

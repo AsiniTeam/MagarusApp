@@ -36,5 +36,27 @@
         android:id="@+id/homeFragment"
         android:name="com.example.magarusapp.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_inviteFragment2"
+            app:destination="@id/inviteFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/inviteFragment2"
+        android:name="com.example.magarusapp.InviteFragment2"
+        android:label="fragment_invite"
+        tools:layout="@layout/fragment_invite" >
+        <action
+            android:id="@+id/action_inviteFragment2_to_askUserFragment"
+            app:destination="@id/askUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/askUserFragment"
+        android:name="com.example.magarusapp.AskUserFragment"
+        android:label="fragment_ask_user"
+        tools:layout="@layout/fragment_ask_user" >
+        <argument
+            android:name="invitedUser"
+            app:argType="string" />
+    </fragment>
 </navigation>

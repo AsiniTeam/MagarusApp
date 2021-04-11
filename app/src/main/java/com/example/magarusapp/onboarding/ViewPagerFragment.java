@@ -13,6 +13,8 @@ import com.example.magarusapp.R;
 import com.example.magarusapp.onboarding.screens.Screen1;
 import com.example.magarusapp.onboarding.screens.Screen2;
 import com.example.magarusapp.onboarding.screens.Screen3;
+import com.example.magarusapp.onboarding.screens.Screen4;
+import com.example.magarusapp.onboarding.screens.Screen5;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ public class ViewPagerFragment extends Fragment {
     Screen1 screen1 = new Screen1();
     Screen2 screen2 = new Screen2();
     Screen3 screen3 = new Screen3();
+    Screen4 screen4 = new Screen4();
+    Screen5 screen5 = new Screen5();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +40,8 @@ public class ViewPagerFragment extends Fragment {
         fragmentList.add(screen1);
         fragmentList.add(screen2);
         fragmentList.add(screen3);
+        fragmentList.add(screen4);
+        fragmentList.add(screen5);
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(requireActivity(), fragmentList);
 

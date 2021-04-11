@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="256dp">
+
+
+    <TextView
+        android:id="@+id/textViewExpanded1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:background="@color/fra_red"
+        android:textColor="#FFF"
+        android:padding="8dp"
+        style="@style/TextAppearance.Compat.Notification"
+        android:gravity="center_horizontal"
+        android:text="this is the full message"/>
+
+
+
+    <ImageView
+        android:id="@+id/imageViewExpanded1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fagiano"/>
+
+</LinearLayout>
