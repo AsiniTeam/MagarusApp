@@ -7,8 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,11 +46,12 @@ public class Screen5 extends Fragment {
 
         EditText editText = view.findViewById(R.id.userEditText);
         Button button = view.findViewById(R.id.userButton);
+        ViewPager2 viewPager2 = requireActivity().findViewById(R.id.onBoardingViewPager);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveUserOnFirebase(editText, view);
+                saveUserOnFirebase(editText, view, viewPager2);
             }
         });
 
@@ -62,7 +63,7 @@ public class Screen5 extends Fragment {
 
 
 
-    public void saveUserOnFirebase(EditText editText, View view){
+    public void saveUserOnFirebase(EditText editText, View view, ViewPager2 viewPager2){
         if (editText.getText().toString().isEmpty()) {
             Toast.makeText(requireContext(), "Che cacchio schiacci che poi io schiaccio tua madre", Toast.LENGTH_LONG).show();
         }
@@ -79,7 +80,7 @@ public class Screen5 extends Fragment {
                         ref.child("users").child("namesList").setValue(namesList);
                         setFirebaseFirst(ref, name);
                         onBoardingFinished(name);
-                        Navigation.findNavController(view).navigate(R.id.action_viewPagerFragment_to_homeFragment);
+                        viewPager2.setCurrentItem(5);
 
                     } else {
                         Log.i(TAG, "snapshot is (2)" + snapshot);
@@ -91,7 +92,7 @@ public class Screen5 extends Fragment {
                             ref.child("users").child("namesList").setValue(namesList);
                             setFirebase(name, ref, namesList);
                             onBoardingFinished(name);
-                            Navigation.findNavController(view).navigate(R.id.action_viewPagerFragment_to_homeFragment);
+                            viewPager2.setCurrentItem(5);
 
                         } else {
                             Toast.makeText(requireContext(), "This user already exists", Toast.LENGTH_LONG).show();
