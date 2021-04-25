@@ -27,8 +27,8 @@
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager" >
         <action
-            android:id="@+id/action_viewPagerFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            android:id="@+id/action_viewPagerFragment_to_introductionFragment"
+            app:destination="@id/introductionFragment"
             app:popUpTo="@id/viewPagerFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -58,5 +58,38 @@
         <argument
             android:name="invitedUser"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.example.magarusapp.ImageFragment"
+        android:label="fragment_image"
+        tools:layout="@layout/fragment_image" >
+        <action
+            android:id="@+id/action_imageFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/introductionFragment"
+        android:name="com.example.magarusapp.IntroductionFragment"
+        android:label="fragment_introduction"
+        tools:layout="@layout/fragment_introduction" >
+        <action
+            android:id="@+id/action_introductionFragment_to_nameFragment"
+            app:destination="@id/nameFragment"
+            app:popUpTo="@id/introductionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="com.example.magarusapp.NameFragment"
+        android:label="fragment_name"
+        tools:layout="@layout/fragment_name" >
+        <action
+            android:id="@+id/action_nameFragment_to_imageFragment"
+            app:destination="@id/imageFragment"
+            app:popUpTo="@id/nameFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

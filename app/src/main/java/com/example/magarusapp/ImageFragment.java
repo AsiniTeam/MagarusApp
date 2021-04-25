@@ -1,4 +1,4 @@
-package com.example.magarusapp.onboarding.screens;
+package com.example.magarusapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,25 +15,24 @@ import android.widget.ImageView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.example.magarusapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 
-public class Screen6 extends Fragment {
+public class ImageFragment extends Fragment {
 
     public static final int TIME_TEXT = 8000;
     public static final String TAG = "Screen6";
-    private static final String USER_STRING = "on_boarding_string";
+    private static final String USER_STRING = "on_boarding_string2";
     private static final String ON_BOARDING_STRING = "on_boarding_pref";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_screen6, container, false);
+        View view = inflater.inflate(R.layout.fragment_image, container, false);
 
         ViewPager2 viewPager2 = requireActivity().findViewById(R.id.onBoardingViewPager);
 
@@ -58,7 +56,7 @@ public class Screen6 extends Fragment {
 
 
         for (int i = 0; i < images.size(); i++) {
-            YoYo.with(Techniques.Shake).duration(2000).playOn(images.get(i));
+            YoYo.with(Techniques.Wobble).duration(2000).playOn(images.get(i));
         }
 
 
@@ -87,7 +85,7 @@ public class Screen6 extends Fragment {
                 public void onClick(View v) {
                     Log.i(TAG, "myName is: " + myName);
                     ref.child("images").child(myName).child("image").setValue(finalI);
-                    Navigation.findNavController(view).navigate(R.id.action_viewPagerFragment_to_homeFragment);
+                    Navigation.findNavController(view).navigate(R.id.action_imageFragment_to_homeFragment);
                 }
             });
         }

@@ -30,13 +30,11 @@ public class AskUserFragment extends Fragment {
     private static final String TAG = "AskUserFragment";
     //public static final String STRING_INVITED_USER = "invited_user1";
     public static String MESSAGE = "would you like to play with me??";
-    private static final String USER_STRING = "on_boarding_string";
+    private static final String USER_STRING = "on_boarding_string2";
     private static final String ON_BOARDING_STRING = "on_boarding_pref";
     public static final String STRING_INVITED_USER_INTENT = "stringForInvitedUser1";
     public static final String STRING_MY_USER_INTENT = "stringForMyUser1";
 
-    Intent mServiceIntent;
-    private ServiceForInvite2 mYourService;
 
 
     @Override
@@ -55,9 +53,7 @@ public class AskUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendNotification(messageText, invitedUser, myName);
-                Intent intent = new Intent(requireContext(), FirstPlayActivity.class);
-                intent.putExtra(STRING_INVITED_USER_INTENT, invitedUser);
-                startActivity(intent);
+
             }
         });
 
@@ -79,7 +75,7 @@ public class AskUserFragment extends Fragment {
 
 
     public void updateViews(EditText editText, String name) {
-        editText.setHint("Invite " + name);
+        editText.setHint("Scrivi qualcosa a " + name);
     }
 
     public String loadUserFromPhone() {
@@ -96,7 +92,9 @@ public class AskUserFragment extends Fragment {
        else {
            MESSAGE = editText.getText().toString();
            sendMessage(MESSAGE, invitedUser, myName);
-           startService(invitedUser);
+           Intent intent = new Intent(requireContext(), FirstPlayActivity.class);
+           intent.putExtra(STRING_INVITED_USER_INTENT, invitedUser);
+           startActivity(intent);
        }
     }
 
@@ -110,27 +108,6 @@ public class AskUserFragment extends Fragment {
         ref.child("message").setValue(message);
     }
 
-
-    public void startService (String invitedUser) {
-        mYourService = new ServiceForInvite2();
-        mServiceIntent = new Intent(requireContext(), mYourService.getClass());
-        mServiceIntent.putExtra(STRING_INVITED_USER_INTENT, invitedUser);
-        if (!isMyServiceRunning(mYourService.getClass())) {
-            requireActivity().startService(mServiceIntent);
-        }
-    }
-
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) requireActivity().getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                Log.i (TAG, "Service2 running");
-                return true;
-            }
-        }
-        Log.i (TAG, "Service2 not running");
-        return false;
-    }
 
 
 }

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@color/fra_red"
-    tools:context=".onboarding.screens.Screen6">
+    tools:context=".ImageFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -17,46 +17,63 @@
         android:text="Scegli il tuo vero io"
         android:textSize="30sp"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="350dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="60dp">
+        android:layout_height="400dp"
+        android:layout_marginTop="40dp">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/fagiano"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/fagiano"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/asino"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/asino"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/dugongo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/dugongo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/black"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cinghiale"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/cinghiale"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/black"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"/>
 
         <ImageView
             android:id="@+id/bono"

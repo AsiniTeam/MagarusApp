@@ -13,7 +13,12 @@
         tools:layout="@layout/fragment_count" >
         <action
             android:id="@+id/action_countFragment2_to_playFragment"
-            app:destination="@id/playFragment" />
+            app:destination="@id/playFragment"
+            app:popUpTo="@id/countFragment2"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="refString"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/playFragment"
@@ -22,11 +27,25 @@
         tools:layout="@layout/fragment_play" >
         <action
             android:id="@+id/action_playFragment_to_finishFirstPlayFragment"
-            app:destination="@id/finishFirstPlayFragment" />
+            app:destination="@id/finishFirstPlayFragment"
+            app:popUpTo="@id/playFragment"
+            app:popUpToInclusive="true">
+            <argument android:name="winnerUser" />
+        </action>
+        <argument
+            android:name="refString1"
+            app:argType="string" />
+        <argument
+            android:name="refString2"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/finishFirstPlayFragment"
         android:name="com.example.magarusapp.firstplay.FinishFirstPlayFragment"
         android:label="fragment_finish_first_play"
-        tools:layout="@layout/fragment_finish_first_play" />
+        tools:layout="@layout/fragment_finish_first_play" >
+        <argument
+            android:name="winnerUser"
+            app:argType="string" />
+    </fragment>
 </navigation>

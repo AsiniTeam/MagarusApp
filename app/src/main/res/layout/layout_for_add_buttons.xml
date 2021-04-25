@@ -15,15 +15,15 @@
         android:scaleX="2"
         android:scaleY="2"
         android:scaleType="fitCenter"
-        android:src="@drawable/fagiano"
-        app:tint="@color/fra_red" />
+        android:src="@drawable/fagiano" />
 
     <TextView
         android:id="@+id/userText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:translationY="-20dp"
         android:text="User"
+        style="@style/CardView"
+        android:rotation="-10"
         android:textColor="@color/fra_red"
         android:textSize="20sp" />
 

@@ -31,8 +31,7 @@ public class Screen3 extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                viewPager2.setCurrentItem(3);
+                Navigation.findNavController(view).navigate(R.id.action_viewPagerFragment_to_introductionFragment);
             }
         });
 

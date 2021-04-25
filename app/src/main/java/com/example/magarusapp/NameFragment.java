@@ -1,4 +1,4 @@
-package com.example.magarusapp.onboarding.screens;
+package com.example.magarusapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,8 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.magarusapp.R;
-import com.example.magarusapp.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,12 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Screen5 extends Fragment {
+public class NameFragment extends Fragment {
 
     private static final String TAG = "Screen5";
     private static final String ON_BOARDING_STRING = "on_boarding_pref";
-    private static final String BOOLEAN_STRING = "on_boarding_boolean3";
-    private static final String USER_STRING = "on_boarding_string";
+    private static final String BOOLEAN_STRING = "on_boarding_boolean4";
+    private static final String USER_STRING = "on_boarding_string2";
     public static final int TIME_UPLOADING = 3000;
 
 
@@ -42,16 +39,15 @@ public class Screen5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_screen5, container, false);
+        View view = inflater.inflate(R.layout.fragment_name, container, false);
 
         EditText editText = view.findViewById(R.id.userEditText);
         Button button = view.findViewById(R.id.userButton);
-        ViewPager2 viewPager2 = requireActivity().findViewById(R.id.onBoardingViewPager);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveUserOnFirebase(editText, view, viewPager2);
+                saveUserOnFirebase(editText, view);
             }
         });
 
@@ -63,7 +59,7 @@ public class Screen5 extends Fragment {
 
 
 
-    public void saveUserOnFirebase(EditText editText, View view, ViewPager2 viewPager2){
+    public void saveUserOnFirebase(EditText editText, View view){
         if (editText.getText().toString().isEmpty()) {
             Toast.makeText(requireContext(), "Che cacchio schiacci che poi io schiaccio tua madre", Toast.LENGTH_LONG).show();
         }
@@ -80,7 +76,7 @@ public class Screen5 extends Fragment {
                         ref.child("users").child("namesList").setValue(namesList);
                         setFirebaseFirst(ref, name);
                         onBoardingFinished(name);
-                        viewPager2.setCurrentItem(5);
+                        Navigation.findNavController(view).navigate(R.id.action_nameFragment_to_imageFragment);
 
                     } else {
                         Log.i(TAG, "snapshot is (2)" + snapshot);
@@ -92,7 +88,7 @@ public class Screen5 extends Fragment {
                             ref.child("users").child("namesList").setValue(namesList);
                             setFirebase(name, ref, namesList);
                             onBoardingFinished(name);
-                            viewPager2.setCurrentItem(5);
+                            Navigation.findNavController(view).navigate(R.id.action_nameFragment_to_imageFragment);
 
                         } else {
                             Toast.makeText(requireContext(), "This user already exists", Toast.LENGTH_LONG).show();
@@ -140,7 +136,12 @@ public class Screen5 extends Fragment {
     public void setFirebaseFirst(DatabaseReference ref, String name) {
         ref.child("notification").child(name).child(name).child("notification").setValue(false);
         ref.child("notification").child(name).child(name).child("message").setValue("No message written");
-        ref.child("confirmation").child(name).child(name).child("confirmation").setValue(false);
+        //ref.child("confirmation").child(name).child(name).child("confirmation").setValue(false);
+        ref.child("connection").child(name).child("second").child("connection").setValue(false);
+        ref.child("connection").child(name).child("second").child("name").setValue(name);
+        ref.child("connection").child(name).child("second").child("victory").setValue(false);
+        ref.child("connection").child(name).child("first").child("victory").setValue(false);
+        ref.child("points").child(name).child("points").setValue(0);
     }
 
 
@@ -150,13 +151,17 @@ public class Screen5 extends Fragment {
         for (int i = 0; i < namesList.size(); i++) {
             ref.child("notification").child(name).child(namesList.get(i)).child("notification").setValue(false);
             ref.child("notification").child(name).child(namesList.get(i)).child("message").setValue("No message written");
-            ref.child("confirmation").child(name).child(namesList.get(i)).child("confirmation").setValue(false);
+
         }
         for (int i = 0; i < namesList.size(); i++) {
             ref.child("notification").child(namesList.get(i)).child(name).child("notification").setValue(false);
             ref.child("notification").child(namesList.get(i)).child(name).child("message").setValue("No message written");
-            ref.child("confirmation").child(namesList.get(i)).child(name).child("confirmation").setValue(false);
+            ref.child("connection").child(name).child("second").child("connection").setValue(false);
+            ref.child("connection").child(name).child("first").child("victory").setValue(false);
+            ref.child("connection").child(name).child("second").child("victory").setValue(false);
         }
+        ref.child("points").child(name).child("points").setValue(0);
+        ref.child("connection").child(name).child("second").child("name").setValue(name);
     }
 
 

@@ -28,7 +28,7 @@ public class SplashFragment extends Fragment {
     private static final long SPLASH_TIME = 4000 ;
     private static final long SPLASH_TIME_SOUND = 1000 ;
     private static final String ON_BOARDING_STRING = "on_boarding_pref" ;
-    private static final String BOOLEAN_STRING = "on_boarding_boolean3";
+    private static final String BOOLEAN_STRING = "on_boarding_boolean4";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,19 +61,12 @@ public class SplashFragment extends Fragment {
 
 
         MediaPlayer donkey_sound = MediaPlayer.create(requireContext(), R.raw.donkey_sound);
+        donkey_sound.setVolume((float) 0.05, (float) 0.05);
 
 
-        handler1.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                donkey_sound.start();
-            }
-        }, SPLASH_TIME_SOUND);
+        handler1.postDelayed(() -> donkey_sound.start(), SPLASH_TIME_SOUND);
 
 
-
-        ServiceForInvite2 serviceForInvite2 = new ServiceForInvite2();
-        serviceForInvite2.stopSelf();
 
         return view;
 
