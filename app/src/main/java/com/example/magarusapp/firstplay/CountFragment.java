@@ -92,11 +92,15 @@ public class CountFragment extends Fragment {
                         }
                         @Override
                         public void onFinish() {
-                            checkConnection(view);
+                            //checkConnection(view);
+                            String refString1 = invitedUser;
+                            String refString2 = "first";
+                            CountFragmentDirections.ActionCountFragment2ToPlayFragment action = CountFragmentDirections.actionCountFragment2ToPlayFragment(refString1, refString2);
+                            Navigation.findNavController(view).navigate(action);
                         }
                     }.start();
                 } else {
-                    Toast.makeText(requireContext(), "Aspetta finchè " + invitedUser + " non si connette.", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(requireContext(), "Aspetta finchè " + invitedUser + " non si connette.", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -152,11 +156,15 @@ public class CountFragment extends Fragment {
                         }
                         @Override
                         public void onFinish() {
-                            checkConnectionNull(view, name);
+                            //checkConnectionNull(view, name);
+                            String refString1 = myName;
+                            String refString2 = "second";
+                            CountFragmentDirections.ActionCountFragment2ToPlayFragment action = CountFragmentDirections.actionCountFragment2ToPlayFragment(refString1, refString2);
+                            Navigation.findNavController(view).navigate(action);
                         }
                     }.start();
                 } else {
-                    Toast.makeText(requireContext(), name + " nun ghi è sta chiù", Toast.LENGTH_LONG).show();
+                    Toast.makeText(requireContext(), name + " non ci sta più", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(requireContext(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -218,7 +226,7 @@ public class CountFragment extends Fragment {
             Log.i(TAG, "onStop is called");
         }
         else {
-            refConnection.child(invitedUser).child("first").child("connection").setValue(false);
+            //refConnection.child(invitedUser).child("first").child("connection").setValue(false);
             Log.i(TAG, "onStop is called");
         }
     }

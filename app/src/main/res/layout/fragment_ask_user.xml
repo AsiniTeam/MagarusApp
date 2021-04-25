@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/inviteEditText"
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="180dp"
         android:background="@drawable/edit_text_layout"
         android:drawableStart="@drawable/ic_fagian_notification"
         android:drawableLeft="@drawable/ic_fagian_notification"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.387"
         android:ellipsize="end"
-        android:singleLine="true"
+        android:singleLine="false"
         android:paddingRight="12dp" />
 
     <Button

@@ -5,9 +5,11 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavAction;
@@ -25,15 +27,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class InviteFragment2 extends Fragment {
 
@@ -43,15 +52,21 @@ public class InviteFragment2 extends Fragment {
     ArrayList<LinearLayout> linearLayouts;
     private static final String ON_BOARDING_STRING = "on_boarding_pref";
     private static final String USER_STRING = "on_boarding_string2";
+    StorageReference mapRef = FirebaseStorage.getInstance().getReference().child("map1.jpg");
 
 
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_invite, container, false);
         ConstraintLayout constraintLayoutForButtons = view.findViewById(R.id.constraintLayoutForButtons);
+        ImageView sanbeImage = view.findViewById(R.id.sanbeMap);
+        setImage(sanbeImage);
         String myName = loadNameFromPhone();
         loadUser(constraintLayoutForButtons, view, myName);
         return view;
@@ -94,8 +109,8 @@ public class InviteFragment2 extends Fragment {
 
     public void createLayout(int j, String myName, ArrayList<String> namesList, ConstraintLayout constraintLayoutForButtons) {
         View layoutView = getLayoutInflater().inflate(R.layout.layout_for_add_buttons, null, false);
-        layoutView.setTranslationX((float) (Math.random()*(500)));
-        layoutView.setTranslationY((float) (Math.random()*(500)));
+        layoutView.setTranslationX((float) (Math.random()*(500) - 200));
+        layoutView.setTranslationY((float) (Math.random()*(500) - 200));
         ImageView imageView = layoutView.findViewById(R.id.userButton);
         updateViews(namesList.get(j), imageView);
         imageViews.add(imageView);
@@ -183,6 +198,12 @@ public class InviteFragment2 extends Fragment {
     }
 
 
+
+    public void setImage(ImageView imageView) {
+        Glide.with(this /* context */)
+                .load(mapRef)
+                .into(imageView);
+    }
 
 
 }
